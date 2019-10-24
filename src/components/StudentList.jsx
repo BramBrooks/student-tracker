@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import getStudentData from "../api";
+import * as api from "../api";
 import StudentCard from "./StudentCard";
+import SingleStudent from "./SingleStudent";
 
 class StudentList extends Component {
   state = { students: [] };
 
   componentDidMount() {
-    getStudentData().then(studentData => {
-      console.log(studentData.students);
+    console.log("mounting...");
+    api.getStudentData().then(studentData => {
       this.setState({ students: studentData.students });
     });
   }
@@ -15,6 +16,7 @@ class StudentList extends Component {
   render() {
     return (
       <ul>
+        <SingleStudent />
         {this.state.students.map(student => (
           <StudentCard student={student} key={student._id} />
         ))}

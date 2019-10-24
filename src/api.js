@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getStudentData = () => {
+export const getStudentData = () => {
   return axios
     .get("https://nc-student-tracker.herokuapp.com/api/students")
     .then(response => {
@@ -8,4 +8,10 @@ const getStudentData = () => {
     });
 };
 
-export default getStudentData;
+export const getStudentDataById = id => {
+  return axios
+    .get(`https://nc-student-tracker.herokuapp.com/api/students/${id}`)
+    .then(response => {
+      return response.data;
+    });
+};
