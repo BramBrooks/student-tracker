@@ -20,6 +20,7 @@ class StudentList extends Component {
         <Router>
           <SingleStudent path="/:id" />
         </Router>
+        <h2>All Students</h2>
         {this.state.students.map(student => (
           <StudentCard student={student} key={student._id} />
         ))}
